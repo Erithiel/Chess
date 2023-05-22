@@ -25,7 +25,7 @@ public class Rook extends Figure{
         boolean verifierX = x != this.getX();
         boolean verifierY = y != this.getY();
         boolean isRightMove = verifierX ^ verifierY;
-        System.out.println(isRightMove);
+        
         if(!isRightMove){
             return false;
         }

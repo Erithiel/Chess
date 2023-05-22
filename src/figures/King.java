@@ -1,14 +1,27 @@
 package figures;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 import main.Board;
 import main.Figure;
 
+
 public class King extends Figure {
-    private int ID = 1;
+    private int ID = 6;
+    private ImageIcon image;
 
     public King(int x, int y,boolean colour) {
         super(x, y, colour);
         if(!colour){
             ID *= -1;
+            ImageIcon originalImage = new ImageIcon("src/chess/black-king.png");
+            Image scaledImage = originalImage.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+            this.image = new ImageIcon(scaledImage);
+        }else{
+            ImageIcon originalImage = new ImageIcon("src/chess/white-king.png");
+            Image scaledImage = originalImage.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+            this.image = new ImageIcon(scaledImage);
         }
     }
 
@@ -25,6 +38,11 @@ public class King extends Figure {
     @Override
     public int getFigureID() {
         return ID;
+    }
+
+    @Override
+    protected ImageIcon getImage() {
+        return image;
     }
     
 }

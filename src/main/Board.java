@@ -25,6 +25,12 @@ public class Board {
     public List<Figure> getallFiguresOnBoard(){
         return allFiguresOnBoard;
     }
+    public List<Figure> getAllBlackFigures(){
+        return this.allBlackFigures;
+    }
+    public List<Figure> getAllWhiteFigures(){
+        return this.allWhiteFigures;
+    }
 
     public void printBoard() {
         for (int i = 0; i < board.length; i++) {
@@ -41,11 +47,12 @@ public class Board {
 
     public void changeBoard(int x,int y , Figure figure){
         allFiguresOnBoard.add(figure);
+        
         board[y][x] = figure;
-        if(figure.colour == -1){
-            allBlackFigures.add(figure);
-        }else{
+        if(figure.colour){
             allWhiteFigures.add(figure);
+        }else{
+            allBlackFigures.add(figure);
         }
     }
 
