@@ -1,17 +1,27 @@
 package figures;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 import main.Board;
 import main.Figure;
 
 public class Rook extends Figure{
     private int ID = 5;
-
+    private ImageIcon image;
+    private ImageIcon originalImage;
 
     public Rook(int x, int y, boolean colour) {
         super(x, y, colour);
         if(!colour){
             ID *= -1;
+            originalImage = new ImageIcon("src/chess/black-queen.png");
+        }else{
+            originalImage = new ImageIcon("src/chess/white-queen.png");
         }
+        Image scaledImage = originalImage.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        this.image = new ImageIcon(scaledImage);
     }
 
     @Override
@@ -53,6 +63,11 @@ public class Rook extends Figure{
             }
         }
         return true;
+    }
+
+    @Override
+    protected ImageIcon getImage() {
+        return this.image;
     }
     
 }

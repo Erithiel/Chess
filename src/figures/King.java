@@ -10,19 +10,17 @@ import main.Figure;
 public class King extends Figure {
     private int ID = 6;
     private ImageIcon image;
-
+    private ImageIcon originalImage;
     public King(int x, int y,boolean colour) {
         super(x, y, colour);
         if(!colour){
             ID *= -1;
-            ImageIcon originalImage = new ImageIcon("src/chess/black-king.png");
-            Image scaledImage = originalImage.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-            this.image = new ImageIcon(scaledImage);
+            originalImage = new ImageIcon("src/chess/black-king.png");
         }else{
-            ImageIcon originalImage = new ImageIcon("src/chess/white-king.png");
-            Image scaledImage = originalImage.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-            this.image = new ImageIcon(scaledImage);
+            originalImage = new ImageIcon("src/chess/white-king.png");
         }
+        Image scaledImage = originalImage.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        this.image = new ImageIcon(scaledImage);
     }
 
     @Override
